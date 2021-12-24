@@ -1,0 +1,18 @@
+After installing ngrok using ngrok_docs (https://dashboard.ngrok.com/get-started/setup)
+
+** quick shortcut for downloading ngrok ARM zip : "wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip"
+
+# sudo nano /root/.ngrok2/ngrok.yml
+add authtoken if not present already 
+for adding tunnels 
+
+`
+authtoken: authtokensample
+tunnels:
+  ssh:
+    proto: tcp
+    addr: 22
+  dashboard:
+    proto: http
+    addr: 8080
+`

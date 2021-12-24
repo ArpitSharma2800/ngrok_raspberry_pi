@@ -1,0 +1,34 @@
+For creating service file go through following commands:
+# sudo nano /etc/systemd/system/ngrok-client.service
+# Copy Paste following commands
+
+[Unit]
+Description=Companion Service
+After=network.target
+
+[Service]
+Environment=PATH=/home/_USERINPUT_/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/home/_USERINPUT_/ngrok start --all
+WorkingDirectory=/home/_USERINPUT_/
+StandardOutput=tty,
+StandardError=tty
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+#sudo systemctl daemon-reload
+#sudo systemctl enable ngrok-client
+#sudo systemctl start ngrok-client
+#systemctl status ngrok-client.service
+
+It must give response similar to:
+● ngrok-client.service - Companion Service
+     Loaded: loaded (/etc/systemd/system/ngrok-client.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2021-12-24 00:05:49 IST; 12h ago
+   Main PID: 490 (ngrok)
+      Tasks: 10 (limit: 1597)
+        CPU: 45.679s
+     CGroup: /system.slice/ngrok-client.service
+             └─490 /home/pi/ngrok start --all
